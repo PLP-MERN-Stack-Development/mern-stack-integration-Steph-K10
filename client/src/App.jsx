@@ -1,8 +1,4 @@
 // App.jsx - Main application component
-function App() {
-  console.log('🔥 DEPLOYMENT TEST: Email + Floating Emojis SHOULD be here');
-  // ... rest of your code
-}
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
