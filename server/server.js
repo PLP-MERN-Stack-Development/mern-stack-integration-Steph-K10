@@ -21,7 +21,8 @@ const PORT = process.env.PORT || 5000;
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://mern-stack-integration-steph-k10.vercel.app'
+  'https://mern-stack-integration-steph-k10.vercel.app',
+  'https://mern-101-blog.netlify.app/'
 ];
 
 app.use(cors({
