@@ -1,7 +1,8 @@
-// server/controllers/auth.js - Enhanced with comprehensive logging
+// server/controllers/auth.js- with comrehensive logging and email integration
 
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const { sendWelcomeEmail } = require('../utils/emailService'); // Add this import
 
 // Generate JWT token
 const generateToken = (id) => {
@@ -70,6 +71,23 @@ const register = async (req, res, next) => {
       role: user.role,
       createdAt: user.createdAt
     });
+
+    // Send welcome email (non-blocking - don't await)
+    console.log('📧 Initiating welcome email sending...');
+    sendWelcomeEmail(user.email, user.username)
+      .then(result => {
+        if (result) {
+          console.log('🎉 Welcome email delivered successfully via Resend');
+          console.log('📨 Resend Email ID:', result.id);
+        } else {
+          console.log('⚠️  Welcome email was not sent (but user registration completed successfully)');
+        }
+      })
+      .catch(emailError => {
+        console.error('📧 Email sending failed:', emailError.message);
+        // Don't throw - email failure shouldn't break user registration
+        console.log('ℹ️  User registration successful despite email failure');
+      });
 
     // Generate token
     const token = generateToken(user._id);
