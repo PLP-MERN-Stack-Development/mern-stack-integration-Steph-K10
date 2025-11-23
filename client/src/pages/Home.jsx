@@ -1,4 +1,4 @@
-// Home.jsx - Home page component
+// Home.jsx - Home page component with added floating tech icons
 
 import React, { useState, useEffect } from 'react';
 import { usePosts } from '../context/PostContext';
@@ -30,11 +30,45 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="text-center py-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg mb-8">
-        <h1 className="text-4xl font-bold mb-4">Welcome to MERN 101 Blog</h1>
-        <p className="text-xl mb-8">Discover amazing stories and share your thoughts</p>
-        <SearchBar />
+      {/* Hero Section with Floating Icons */}
+      <section className="relative py-16 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg mb-8 overflow-hidden">
+        {/* Floating Icons */}
+        <div className="absolute inset-0">
+          {/* MongoDB Icon */}
+          <div className="absolute top-4 left-10 text-4xl animate-bounce" style={{ animationDelay: '0s' }}>
+            🍃
+          </div>
+          
+          {/* Express Icon */}
+          <div className="absolute top-8 right-20 text-4xl animate-bounce" style={{ animationDelay: '0.5s' }}>
+            ⚡
+          </div>
+          
+          {/* React Icon */}
+          <div className="absolute bottom-5 left-20 text-4xl animate-bounce" style={{ animationDelay: '1s' }}>
+            ⚛️
+          </div>
+          
+          {/* Node.js Icon */}
+          <div className="absolute bottom-4 right-10 text-4xl animate-bounce" style={{ animationDelay: '1.5s' }}>
+            📦
+          </div>
+          
+          {/* Additional floating elements */}
+          <div className="absolute top-16 left-1/4 text-2xl animate-pulse" style={{ animationDelay: '2s' }}>
+            🚀
+          </div>
+          <div className="absolute bottom-16 right-1/4 text-2xl animate-pulse" style={{ animationDelay: '2.5s' }}>
+            💻
+          </div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl font-bold mb-4">Welcome to MERN 101 Blog</h1>
+          <p className="text-xl mb-8">Discover amazing stories built with the MERN stack</p>
+          <SearchBar />
+        </div>
       </section>
 
       {/* Category Filter */}
